@@ -19,8 +19,10 @@ def doCalc(E,D,L):
 
 def findHz(E,D):
     d = 0.003 #depth [m] 0.3 cm
-    b = 0.02 #breadth [m] 2 cm
+    b = 0.01 #breadth [m] 1 cm
     I = (b*d**3)/12
+    
+    
     L = 0.5 # length [m]
     sl = 0.000001 #step length
     while True:
@@ -33,7 +35,7 @@ def findHz(E,D):
         elif w1GHz > 160:
             w1 = (1.875)**2*np.sqrt((E*I)/((b*d)*D*L**4)) #formel
             w1GHz = (w1/(2*3.14))/1000 # konvertera från [rad/s] till GHz
-            print("found length",L, "where it vibrates with a frequency of",w1GHz)
+            print("found length",L, "m where it vibrates with a frequency of",w1GHz)
             return L
 
 """
@@ -57,11 +59,12 @@ D = 15600 # density [kg/m^3]
 L = 0.004334# beam length [m] 0.4334cm
 """
 
-
+"""
 #diamond(synthetic)
 E = 1.05*10**12 # modulus of the beam material [N/m^2]
 D = 3500 # density [kg/m^3]
 L = 0.007243# beam length [m] 0.7343 cm
+"""
 
 # doCalc(E, D, L)
 
