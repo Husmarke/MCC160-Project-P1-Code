@@ -8,35 +8,34 @@ import numpy as np
 
 
 def doCalc(E,D,L):
-    d = 0.003 #depth [m] 0.3 cm
-    b = 0.02 #breadth [m] 2 cm
+    d = 0.003 # depth [m]
+    b = 0.02 # breadth [m]
     I = (b*d**3)/12
 
     # finding the first undampened natural frequency
-    w1 = (1.875)**2*np.sqrt((E*I)/((b*d)*D*L**4)) #formel
-    w1Hz = w1/(2*3.14) # konvertera från [rad/s] till Hz
+    w1 = (1.875)**2*np.sqrt((E*I)/((b*d)*D*L**4))
+    w1Hz = w1/(2*3.14) # Convert from [rad/s] to Hz
     print(w1Hz/1000,"GHz")
 
 def findHz(E,D):
-    d = 0.003 #depth [m] 0.3 cm
-    b = 0.01 #breadth [m] 1 cm
+    d = 0.003 # depth [m]
+    b = 0.01 # breadth [m]
     I = (b*d**3)/12
     
     
     L = 0.5 # length [m]
-    sl = 0.000001 #step length
+    sl = 0.000001 # step length (decrease for better accuracy)
     while True:
         # finding the first undampened natural frequency in GHz
         w1 = (1.875)**2*np.sqrt((E*I)/((b*d)*D*L**4)) #formel
-        w1GHz = (w1/(2*3.14))/1000 # konvertera från [rad/s] till GHz
-        # print(w1GHz)
+        w1GHz = (w1/(2*3.14))/1000 # Convert from [rad/s] to GHz
         if w1GHz <= 160:
             L=L-sl
         elif w1GHz > 160:
-            w1 = (1.875)**2*np.sqrt((E*I)/((b*d)*D*L**4)) #formel
-            w1GHz = (w1/(2*3.14))/1000 # konvertera från [rad/s] till GHz
-            print("found length",L, "m where it vibrates with a frequency of",w1GHz)
-            return L
+            w1 = (1.875)**2*np.sqrt((E*I)/((b*d)*D*L**4))
+            w1GHz = (w1/(2*3.14))/1000 # Convert from [rad/s] to GHz
+            print("found length",L, "m with a first undampened frequency of",w1GHz,"GHz")
+            break
 
 """
 #steel A36
