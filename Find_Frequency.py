@@ -60,14 +60,13 @@ L = 0.004334# beam length [m] 0.4334cm
 
 """
 #diamond(synthetic)
-E = 1.05*10**12 # modulus of the beam material [N/m^2]
-D = 3500 # density [kg/m^3]
+E = 1200*10**9 # modulus of the beam material [N/m^2]
+D = 3520 # density [kg/m^3]
 L = 0.007243# beam length [m] 0.7343 cm
 """
 
-# doCalc(E, D, L)
 
-findHz(1.05*10**12, 3500)
+findHz(1200*10**9, 3520)
 
 
 
